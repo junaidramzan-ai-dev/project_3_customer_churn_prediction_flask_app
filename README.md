@@ -162,7 +162,7 @@ customer_churn_prediction_flask_app/
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/customer_churn_prediction_flask_app.git
+git clone https://github.com/junaidramzan-ai-dev/customer_churn_prediction_flask_app.git
 ```
 
 Move into the project
