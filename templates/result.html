@@ -1,0 +1,664 @@
+{% extends "base.html" %}
+
+{% block title %}
+Prediction Result
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- ===========================
+         PAGE HEADER
+    ============================ -->
+
+    <div class="row mb-5">
+
+        <div class="col-lg-12 text-center">
+
+            <h1 class="display-5 fw-bold text-primary">
+                <i class="bi bi-bar-chart-line-fill"></i>
+                Customer Churn Prediction
+            </h1>
+
+            <p class="lead text-muted">
+                Machine Learning Prediction Dashboard
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===========================
+          STATUS CARD
+    ============================ -->
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+            {% if prediction == "Yes" %}
+
+            <div class="card border-0 shadow-lg rounded-4">
+
+                <div class="card-body p-5 text-center">
+
+                    <div class="display-1 text-danger mb-4">
+
+                        <i class="bi bi-person-x-fill"></i>
+
+                    </div>
+
+                    <span class="badge bg-danger fs-5 px-4 py-3">
+
+                        HIGH CHURN RISK
+
+                    </span>
+
+                    <h2 class="mt-4 fw-bold text-danger">
+
+                        Customer is likely to Churn
+
+                    </h2>
+
+                    <p class="text-muted fs-5 mt-3">
+
+                        The machine learning model predicts that this customer
+                        has a high probability of leaving the company.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <div class="card border-0 shadow-lg rounded-4">
+
+                <div class="card-body p-5 text-center">
+
+                    <div class="display-1 text-success mb-4">
+
+                        <i class="bi bi-person-check-fill"></i>
+
+                    </div>
+
+                    <span class="badge bg-success fs-5 px-4 py-3">
+
+                        LOW CHURN RISK
+
+                    </span>
+
+                    <h2 class="mt-4 fw-bold text-success">
+
+                        Customer is likely to Stay
+
+                    </h2>
+
+                    <p class="text-muted fs-5 mt-3">
+
+                        The machine learning model predicts that this customer
+                        is expected to remain with the company.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- ===========================================
+     DYNAMIC RECOMMENDATIONS
+============================================ -->
+
+<div class="row mt-5">
+
+    <div class="col-lg-12">
+
+        <div class="card border-0 shadow rounded-4">
+
+            <div class="card-header bg-dark text-white">
+
+                <h4 class="mb-0">
+                    <i class="bi bi-lightbulb-fill"></i>
+                    Business Recommendations
+                </h4>
+
+            </div>
+
+            <div class="card-body p-4">
+
+                {% if prediction == "Yes" %}
+
+                <div class="alert alert-danger">
+
+                    <h4>
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        High Risk Customer
+                    </h4>
+
+                    <p class="mb-0">
+                        This customer is likely to churn. Consider immediate retention actions.
+                    </p>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card border-danger h-100">
+
+                            <div class="card-body">
+
+                                <h5 class="text-danger">
+
+                                    <i class="bi bi-gift-fill"></i>
+
+                                    Offer Discounts
+
+                                </h5>
+
+                                <p>
+
+                                    Provide personalized discounts or promotional offers
+                                    to encourage the customer to stay.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card border-warning h-100">
+
+                            <div class="card-body">
+
+                                <h5 class="text-warning">
+
+                                    <i class="bi bi-headset"></i>
+
+                                    Customer Support
+
+                                </h5>
+
+                                <p>
+
+                                    Contact the customer and understand their concerns.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card border-primary h-100">
+
+                            <div class="card-body">
+
+                                <h5 class="text-primary">
+
+                                    <i class="bi bi-stars"></i>
+
+                                    Upgrade Plan
+
+                                </h5>
+
+                                <p>
+
+                                    Recommend a more valuable plan with additional benefits.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card border-success h-100">
+
+                            <div class="card-body">
+
+                                <h5 class="text-success">
+
+                                    <i class="bi bi-chat-dots-fill"></i>
+
+                                    Follow-up
+
+                                </h5>
+
+                                <p>
+
+                                    Schedule a follow-up interaction to improve engagement.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% else %}
+
+                <div class="alert alert-success">
+
+                    <h4>
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Loyal Customer
+
+                    </h4>
+
+                    <p class="mb-0">
+
+                        This customer is expected to remain with the company.
+
+                    </p>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card border-success h-100">
+
+                            <div class="card-body">
+
+                                <h5 class="text-success">
+
+                                    <i class="bi bi-award-fill"></i>
+
+                                    Loyalty Rewards
+
+                                </h5>
+
+                                <p>
+
+                                    Reward long-term customers with loyalty points.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card border-primary h-100">
+
+                            <div class="card-body">
+
+                                <h5 class="text-primary">
+
+                                    <i class="bi bi-arrow-up-circle-fill"></i>
+
+                                    Upselling
+
+                                </h5>
+
+                                <p>
+
+                                    Recommend premium plans and additional services.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card border-warning h-100">
+
+                            <div class="card-body">
+
+                                <h5 class="text-warning">
+
+                                    <i class="bi bi-envelope-fill"></i>
+
+                                    Regular Engagement
+
+                                </h5>
+
+                                <p>
+
+                                    Continue sharing newsletters, offers and updates.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card border-info h-100">
+
+                            <div class="card-body">
+
+                                <h5 class="text-info">
+
+                                    <i class="bi bi-hand-thumbs-up-fill"></i>
+
+                                    Customer Appreciation
+
+                                </h5>
+
+                                <p>
+
+                                    Thank customers for their loyalty and collect feedback.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================================
+     CUSTOMER SUMMARY
+============================================ -->
+
+<div class="row mt-5">
+
+    <div class="col-lg-12">
+
+        <div class="card border-0 shadow rounded-4">
+
+            <div class="card-header bg-secondary text-white">
+
+                <h4 class="mb-0">
+                    <i class="bi bi-person-vcard-fill"></i>
+                    Customer Information Summary
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <table class="table table-hover">
+
+                            <tr>
+                                <th>Gender</th>
+                                <td>{{ form_data.gender }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Senior Citizen</th>
+                                <td>{{ form_data.SeniorCitizen }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Partner</th>
+                                <td>{{ form_data.Partner }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Dependents</th>
+                                <td>{{ form_data.Dependents }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Tenure</th>
+                                <td>{{ form_data.tenure }} Months</td>
+                            </tr>
+
+                            <tr>
+                                <th>Phone Service</th>
+                                <td>{{ form_data.PhoneService }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Multiple Lines</th>
+                                <td>{{ form_data.MultipleLines }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Internet Service</th>
+                                <td>{{ form_data.InternetService }}</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <table class="table table-hover">
+
+                            <tr>
+                                <th>Online Security</th>
+                                <td>{{ form_data.OnlineSecurity }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Online Backup</th>
+                                <td>{{ form_data.OnlineBackup }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Device Protection</th>
+                                <td>{{ form_data.DeviceProtection }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Tech Support</th>
+                                <td>{{ form_data.TechSupport }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Streaming TV</th>
+                                <td>{{ form_data.StreamingTV }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Streaming Movies</th>
+                                <td>{{ form_data.StreamingMovies }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Contract</th>
+                                <td>{{ form_data.Contract }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Paperless Billing</th>
+                                <td>{{ form_data.PaperlessBilling }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Payment Method</th>
+                                <td>{{ form_data.PaymentMethod }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Monthly Charges</th>
+                                <td>${{ "%.2f"|format(form_data.MonthlyCharges) }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Total Charges</th>
+                                <td>${{ "%.2f"|format(form_data.TotalCharges) }}</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===========================================
+     ACTION BUTTONS
+============================================ -->
+
+<div class="row mt-5 mb-5">
+
+    <div class="col-lg-12 text-center">
+
+        <a href="{{ url_for('prediction.predict') }}"
+           class="btn btn-primary btn-lg me-3">
+
+            <i class="bi bi-arrow-repeat"></i>
+
+            Predict Another Customer
+
+        </a>
+
+        <a href="{{ url_for('prediction.home') }}"
+           class="btn btn-outline-secondary btn-lg">
+
+            <i class="bi bi-house-fill"></i>
+
+            Back to Home
+
+        </a>
+
+    </div>
+
+</div>
+
+    <!-- ===========================
+          QUICK SUMMARY
+    ============================ -->
+
+    <div class="row mt-5">
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-cpu-fill display-5 text-primary"></i>
+
+                    <h5 class="mt-3 fw-bold">
+
+                        AI Model
+
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Logistic Regression Pipeline
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-lightning-charge-fill display-5 text-warning"></i>
+
+                    <h5 class="mt-3 fw-bold">
+
+                        Prediction
+
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Generated Successfully
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-shield-check display-5 text-success"></i>
+
+                    <h5 class="mt-3 fw-bold">
+
+                        System Status
+
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Prediction Completed
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

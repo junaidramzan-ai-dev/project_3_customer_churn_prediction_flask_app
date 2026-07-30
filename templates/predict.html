@@ -1,0 +1,339 @@
+{% extends "base.html" %} {% block title %}Predict Customer Churn{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="card border-0 shadow-lg rounded-4 p-5">
+    <div class="text-center mb-5">
+
+<h1 class="display-5 fw-bold">
+
+Customer Churn Prediction
+
+</h1>
+
+<p class="lead text-secondary">
+
+Fill in the customer information below to predict whether
+the customer is likely to churn.
+
+</p>
+
+</div>
+
+    <form action="/predict" method="POST">
+      <!-- Customer Information -->
+
+      <h3 class="text-primary mb-4">
+        <i class="bi bi-person-circle"></i>
+        Customer Information
+      </h3>
+
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <label class="form-label fw-semibold"> Gender </label>
+
+          <select class="form-select form-select-lg" name="gender" required>
+            <option value="" selected disabled>Choose Gender</option>
+
+            <option value="Male">Male</option>
+
+            <option value="Female">Female</option>
+          </select>
+
+          <small class="text-muted"> Select customer's gender. </small>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+          <label class="form-label fw-semibold"> Senior Citizen </label>
+
+          <select
+            class="form-select form-select-lg"
+            name="SeniorCitizen"
+            required
+          >
+            <option value="" selected disabled>Choose Option</option>
+
+            <option value="0">No</option>
+
+            <option value="1">Yes</option>
+          </select>
+
+          <small class="text-muted"> Age 65 or above. </small>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Partner</label>
+          <select class="form-select" name="Partner" required>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Dependents</label>
+          <select class="form-select" name="Dependents" required>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Service Information -->
+
+      <h3 class="text-success mt-5 mb-4">
+        <i class="bi bi-wifi"></i>
+        Service Information
+      </h3>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Phone Service</label>
+          <select class="form-select" name="PhoneService">
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Multiple Lines</label>
+          <select class="form-select" name="MultipleLines">
+            <option>No</option>
+            <option>Yes</option>
+            <option>No phone service</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Internet Service</label>
+          <select class="form-select" name="InternetService">
+            <option>DSL</option>
+            <option>Fiber optic</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Online Security</label>
+          <select class="form-select" name="OnlineSecurity">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Online Backup</label>
+          <select class="form-select" name="OnlineBackup">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Device Protection</label>
+          <select class="form-select" name="DeviceProtection">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Tech Support</label>
+          <select class="form-select" name="TechSupport">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Streaming TV</label>
+          <select class="form-select" name="StreamingTV">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Streaming Movies</label>
+          <select class="form-select" name="StreamingMovies">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+          </select>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Billing Information -->
+
+      <h3 class="text-warning mt-5 mb-4">
+<i class="bi bi-credit-card"></i>
+Billing Information
+</h3>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Contract</label>
+          <select class="form-select" name="Contract">
+            <option>Month-to-month</option>
+            <option>One year</option>
+            <option>Two year</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Paperless Billing</label>
+          <select class="form-select" name="PaperlessBilling">
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Payment Method</label>
+          <select class="form-select" name="PaymentMethod">
+            <option>Electronic check</option>
+            <option>Mailed check</option>
+            <option>Bank transfer (automatic)</option>
+            <option>Credit card (automatic)</option>
+          </select>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Charges -->
+
+      <h3 class="text-danger mt-5 mb-4">
+<i class="bi bi-cash-stack"></i>
+Charges Information
+</h3>
+
+      <div class="col-lg-4 mb-4">
+
+<label class="form-label fw-semibold">
+
+Tenure (Months)
+
+</label>
+
+<input
+
+type="number"
+
+class="form-control form-control-lg"
+
+name="tenure"
+
+placeholder="e.g. 24"
+
+min="0"
+
+max="72"
+
+step="1"
+
+required>
+
+<small class="text-muted">
+
+Contract duration in months.
+
+</small>
+
+</div>
+
+        <div class="col-lg-4 mb-4">
+
+<label class="form-label fw-semibold">
+
+Monthly Charges
+
+</label>
+
+<input
+
+type="number"
+
+class="form-control form-control-lg"
+
+name="MonthlyCharges"
+
+placeholder="e.g. 79.99"
+
+min="0"
+
+max="1000"
+
+step="1"
+
+required>
+
+<small class="text-muted">
+
+Monthly bill amount.
+
+</small>
+
+</div>
+
+        <div class="col-lg-4 mb-4">
+
+<label class="form-label fw-semibold">
+
+Total Charges
+
+</label>
+
+<input
+
+type="number"
+
+class="form-control form-control-lg"
+
+name="TotalCharges"
+
+placeholder="e.g. 1540.50"
+
+min="0"
+
+max="100000"
+
+step="1"
+
+required>
+
+<small class="text-muted">
+
+Total amount paid by customer.
+
+</small>
+
+</div>
+
+      <div class="text-center mt-5">
+
+<button
+type="submit"
+class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
+
+<i class="bi bi-graph-up-arrow"></i>
+
+Predict Customer Churn
+
+</button>
+
+</div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
