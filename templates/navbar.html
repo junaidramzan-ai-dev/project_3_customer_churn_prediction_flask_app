@@ -1,16 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="/">
-            Customer Churn Prediction
+        <a class="navbar-brand fw-bold" href="{{ url_for('prediction.home') }}">
+            <i class="bi bi-bar-chart-fill"></i>
+            Customer Churn Predictor
         </a>
 
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav">
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
 
             <span class="navbar-toggler-icon"></span>
 
@@ -18,20 +18,62 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
 
-            <ul class="navbar-nav ms-auto">
+            <!-- Left Side -->
+            <ul class="navbar-nav me-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/predict">Predict</a>
-                </li>
+                    <a class="nav-link"
+                       href="{{ url_for('prediction.home') }}">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com" target="_blank">
-                        GitHub
+                        <i class="bi bi-house-fill"></i>
+                        Home
+
                     </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="{{ url_for('prediction.predict') }}">
+
+                        <i class="bi bi-cpu-fill"></i>
+                        Predict
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+            <!-- Right Side -->
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="https://github.com/junaidramzan-ai-dev"
+                       target="_blank">
+
+                        <i class="bi bi-github"></i>
+                        GitHub
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="https://www.linkedin.com/in/junaidramzan-ai-dev/"
+                       target="_blank">
+
+                        <i class="bi bi-linkedin"></i>
+                        LinkedIn
+
+                    </a>
+
                 </li>
 
             </ul>
