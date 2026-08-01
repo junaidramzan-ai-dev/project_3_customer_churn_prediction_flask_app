@@ -9,6 +9,12 @@ A Machine Learning web application that predicts whether a customer is likely to
 Customer churn prediction helps businesses identify customers who are likely to leave their services. This project uses a machine learning pipeline to preprocess customer data and predict churn through an interactive Flask web application.
 
 ---
+## Live Demo
+
+🌐 https://project-3-customer-churn-prediction.onrender.com
+
+---
+
 <h2>Application Screenshots</h2>
 
 <p align="center">
